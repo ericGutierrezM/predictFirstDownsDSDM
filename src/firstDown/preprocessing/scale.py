@@ -1,0 +1,3 @@
+
+def scale():
+    return True
