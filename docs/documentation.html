@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Markdown Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Optional styling for readability -->
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+    }
+    pre {
+      background: #eee;
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      background: #eee;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+    }
+    h1, h2, h3 {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
+    a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+    <div id="header"></div>
+    <script>
+    fetch('header.html')
+        .then(res => res.text())
+        .then(html => {
+        document.getElementById('header').innerHTML = html;
+        });
+    </script>
+  <div id="content">Loading Markdown...</div>
+
+  <!-- Marked.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    // Fetch and render your Markdown file
+    fetch('pages/documentation.md')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Markdown file not found");
+        }
+        return response.text();
+      })
+      .then(md => {
+        document.getElementById('content').innerHTML = marked.parse(md);
+      })
+      .catch(error => {
+        document.getElementById('content').innerHTML = "<p>Error loading Markdown: " + error.message + "</p>";
+      });
+  </script>
+</body>
+</html>
