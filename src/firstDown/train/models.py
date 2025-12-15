@@ -33,4 +33,6 @@ def do_fit(X, y, model='lgbm'):
     return clf
 
 def do_predict(X, clf):
-    return True
+    y_pred = clf.predict(X)
+    y_pred_prob = clf.predict_proba(X)[:,1]
+    return y_pred, y_pred_prob

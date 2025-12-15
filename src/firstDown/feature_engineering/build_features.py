@@ -62,7 +62,6 @@ def get_positions(dataset_pbp, dataset_players):
 
     return data
 
-
 def defense_rush(dataset):
 
     results = []
@@ -94,7 +93,6 @@ def defense_rush(dataset):
     dataset = dataset.merge(right=data_grouped[['game_id','defteam','def_vs_rush']], how='left', left_on=['game_id','defteam'], right_on=['game_id','defteam'])
 
     return dataset
-
 
 def defense_pass(dataset):
 
@@ -128,12 +126,11 @@ def defense_pass(dataset):
 
     return dataset
 
-
 def defense_scramble(dataset):
 
     results = []
     data_simple = dataset.copy()
-    data_simple = data_simple[['game_id', 'defteam', 'game_date', 'play_type', 'first_down']]
+    data_simple = data_simple[['game_id', 'defteam', 'game_date', 'play_type', 'first_down', 'qb_scramble']]
     data_simple = data_simple[data_simple['qb_scramble']==1.0]
 
     data_grouped = data_simple.groupby(['game_id','defteam']).agg({'first_down': ['count','sum'], 'game_date': 'first'}).reset_index()

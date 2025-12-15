@@ -28,20 +28,26 @@ def replace_nan(dataset, cols, method, num=0, txt='missing'): # with an argument
     match method:
         case 'mean':
             dataset[cols] = dataset[cols].fillna(dataset[cols].mean())
+            value = dataset[cols].mean()
         case 'median':
             dataset[cols] = dataset[cols].fillna(dataset[cols].median())
+            value = dataset[cols].median()
         case 'min':
             dataset[cols] = dataset[cols].fillna(dataset[cols].min())
+            value = dataset[cols].min()
         case 'max':
             dataset[cols] = dataset[cols].fillna(dataset[cols].max())
+            value = dataset[cols].max()
         case 'num':
             dataset[cols] = dataset[cols].fillna(num)
+            value = num
         case 'text':
             dataset[cols] = dataset[cols].fillna(txt)
+            value = txt
         case _:
             print('Error in specifications. No rows were replaced.')
     
-    return dataset
+    return dataset, value
 
 def drop_nan(dataset, cols):
 
