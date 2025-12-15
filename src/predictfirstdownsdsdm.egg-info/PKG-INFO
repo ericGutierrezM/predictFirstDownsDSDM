@@ -1,0 +1,23 @@
+Metadata-Version: 2.4
+Name: predictfirstdownsdsdm
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.13
+Description-Content-Type: text/markdown
+
+# 🏈 Predicting First Downs in the NFL
+#### Computing for Data Science | Barcelona School of Economics | December 2025
+> Daniel Campos & Eric Gutiérrez
+---
+## Motivation
+
+
+## About the dataset: ```nflreadpy```
+
+
+## uv and required libraries
+- Pandas
+
+## 
+
+## Scaling _firstDown_
