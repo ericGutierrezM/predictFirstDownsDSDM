@@ -246,6 +246,3 @@ Returns a ```class```.
         import firstDown
         clf = firstDown.train.models.get_model(model)
 ---
----
-### 8. unit_tests
----

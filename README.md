@@ -34,6 +34,3 @@ The structure of this library aims at making its scaling straightforward: enabli
 
 > 7. train
 - Train your models. 
-
-> 8. unit_tests
-- Test the methods of the library (ours and the ones you add) using unit testing.
