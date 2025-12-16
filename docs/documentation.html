@@ -2,41 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Markdown Viewer</title>
+  <title>firstDown - documentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Optional styling for readability -->
   <style>
     body {
       font-family: system-ui, -apple-system, sans-serif;
-      max-width: 800px;
+      max-width: 1200px;
       margin: 2rem auto;
       padding: 0 1rem;
       line-height: 1.6;
       background: #f9f9f9;
       color: #333;
+      font-size: 2vh;
     }
-    pre {
-      background: #eee;
-      padding: 0.75rem;
-      overflow-x: auto;
+
+    h2 {
+      font-size: 5vh;
     }
-    code {
-      font-family: monospace;
-      background: #eee;
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-    }
-    h1, h2, h3 {
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3rem;
-    }
-    a {
-      color: #0366d6;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+
   </style>
 </head>
 <body>
@@ -48,6 +32,7 @@
         document.getElementById('header').innerHTML = html;
         });
     </script>
+  <h2>documentation.</h2>
   <div id="content">Loading Markdown...</div>
 
   <!-- Marked.js library -->

@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier,
 from xgboost import XGBClassifier
 from catboost import CatBoostClassifier
 
-def get_model(X, y, model='lgbm'):
+def get_model(model='lgbm'):
     match model:
         case 'lgbm':
             clf = LGBMClassifier()

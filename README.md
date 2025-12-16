@@ -12,10 +12,9 @@ In the ready-to-implement case provided by _firstDown_, we leverage the large am
 The _pyproject.toml_ file in this repository contains all the dependencies needed for the library to run. Please, make sure to install them all in your system before trying out that model that keeps you up at night!
 
 ## On _firstDown_'s structure and scaling
-The structure of this library aims at making scaling it easy: enabling the integration of new functionalities and methods. _firstDown_ is organized in sublibraries as following:
+The structure of this library aims at making its scaling straightforward: enabling the integration of new functionalities and methods. _firstDown_ is organized in sublibraries as following:
 
 > 1. feature_engineering 
-
 - Build new features, and get the most out of them by using encoders.
 
 > 2. graph
