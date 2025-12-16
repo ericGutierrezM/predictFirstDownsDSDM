@@ -81,5 +81,13 @@
         document.getElementById('results').innerHTML = '<pre>' + (result['probability'][0]*100).toFixed(2)+'%' + '</pre>';
       }
     </script>
+      <div id="footer" style="padding-top: 5vh;"></div>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer').innerHTML = html;
+      });
+  </script>
 </body>
 </html>
