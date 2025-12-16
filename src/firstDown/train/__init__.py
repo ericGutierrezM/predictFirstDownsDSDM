@@ -1,1 +1,1 @@
-from .models import do_fit, do_predict
+from .models import get_model, do_predict, do_fit

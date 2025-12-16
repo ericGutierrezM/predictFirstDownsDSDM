@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier,
 from xgboost import XGBClassifier
 from catboost import CatBoostClassifier
 
-def do_fit(X, y, model='lgbm'):
+def get_model(X, y, model='lgbm'):
     match model:
         case 'lgbm':
             clf = LGBMClassifier()
@@ -29,10 +29,14 @@ def do_fit(X, y, model='lgbm'):
         case _:
             raise ValueError(f"Unknown model: {model}")
 
-    clf.fit(X, y)
     return clf
 
 def do_predict(X, clf):
     y_pred = clf.predict(X)
     y_pred_prob = clf.predict_proba(X)[:,1]
     return y_pred, y_pred_prob
+
+def do_fit(random_search, X, y):
+    random_search.fit(X, y)
+    best_model = random_search.best_estimator_
+    return best_model
