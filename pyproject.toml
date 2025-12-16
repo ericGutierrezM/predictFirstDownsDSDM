@@ -5,8 +5,12 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "aiofiles>=25.1.0",
     "catboost>=1.2.8",
     "category-encoders>=2.9.0",
+    "fastapi>=0.124.4",
+    "flask>=3.1.2",
+    "ipykernel>=7.1.0",
     "lightgbm>=4.6.0",
     "nflreadpy>=0.1.5",
     "numpy>=2.3.5",

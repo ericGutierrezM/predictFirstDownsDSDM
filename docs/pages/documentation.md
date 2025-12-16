@@ -75,10 +75,7 @@ Returns a ```DataFrame```.
         updated_dataset = firstDown.feature_engineering.build_features.play_type(dataset)
 ---
 ---
-### 2. graph
----
----
-### 3. hyper_tuning
+### 2. hyper_tuning
 ---
 ```.r_search(param_dist, model)```
 
@@ -90,7 +87,7 @@ Returns a ```class```.
         search = firstDown.hyper_tuning.random_search.r_search(param_dist, model)
 ---
 ---
-### 4. load_data
+### 3. load_data
 ---
 ```.nfl_data()```
 
@@ -102,7 +99,7 @@ Returns two ```DataFrame```.
         pbp, players = firstDown.load_data.datasets.nfl_data()
 ---
 ---
-### 5. metrics
+### 4. metrics
 ---
 ```.accuracy(y_true, y_pred)```
 
@@ -150,7 +147,7 @@ Returns a ```float```.
         roc_auc = firstDown.metrics.model_metrics.roc_auc(y_test, y_pred_prob)
 ---
 ---
-### 6. preprocessing
+### 5. preprocessing
 ---
 ```.drop_control_rows(dataset, control_col, filter_out)```
 
@@ -190,13 +187,21 @@ Returns both a ```DataFrame``` and a value, whose type will depend on the method
 ---
 ```.scaler(dataset, num_cols)```
 
+This function returns the scaler for the numerical columns specified.
+
+Returns a ```class```.
+
+        import firstDown
+        updated_dataset = firstDown.preprocessing.scale.scaler(X_train, num_cols)
+---
+```.scaler_transform(dataset, num_cols, scaler)```
+
 This function scales the numerical columns specified.
 
 Returns a ```DataFrame```.
 
         import firstDown
-        updated_dataset = firstDown.preprocessing.scale.scaler(X_train, num_cols)
-
+        updated_dataset = firstDown.preprocessing.scale.scaler(X_train, num_cols, scaler)
 ---
 ```.search_nan(dataset)```
 
@@ -217,7 +222,7 @@ Returns four ```DataFrame```s.
         X_train, X_test, y_train, y_test = firstDown.preprocessing.split.split_data(dataset, y_col, test_size)
 ---
 ---
-### 7. train
+### 6. train
 ---
 ```.do_fit(search, X, y)```
 

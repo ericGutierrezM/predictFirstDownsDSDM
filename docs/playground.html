@@ -1,8 +1,130 @@
-<div id="header"></div>
-<script>
-  fetch('header.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('header').innerHTML = html;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>firstDown - examples</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Optional styling for readability -->
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+      font-size: 2vh;
+    }
+
+    h2 {
+      font-size: 5vh;
+    }
+
+    #ydstogo_slider {
+    width: 400px;           /* Width of the slider */
+    height: 25px;           /* Height of the track */
+    background: #ddd;       /* Track color */
+    border-radius: 12px;    /* Rounded edges */
+    outline: none;          /* Remove focus outline */
+  }
+
+  </style>
+</head>
+<body>
+    <div id="header"></div>
+    <script>
+    fetch('header.html')
+        .then(res => res.text())
+        .then(html => {
+        document.getElementById('header').innerHTML = html;
+        });
+    </script>
+  <h2>first down probability per yards to end zone.</h2>
+  <div style="display: flex;">
+    <div style="text-align: center; width: 30vw;">
+      <img src="img/field.jpg" style="width: 40vw;">
+      <input type="range" id="ydstogo_slider" min="0" max="100" value="40" step="5" style="width: 31vw; margin-left: 4.5vw; background: #6283e6;">
+    </div>
+    <div style="width: 20vw; margin-left: 12vw;">
+      <label for="yardline_100" style="font-size: 3.5vh; font-weight: bold;">yards to end zone: <span id="ydstogo_val" style="color: #6283e6;">40</span></label>
+      <h3 style="font-size: 3.5vh;">first down probability.</h3>
+      <div id="probability_display" style="font-size: 12vh; margin-top: -5vh; font-weight: bold; color: #6283e6;">--%</div>
+    </div>
+  </div>
+  
+
+
+
+
+  <div id="footer" style="padding-top: 5vh;"></div>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer').innerHTML = html;
+      });
+const slider = document.getElementById('ydstogo_slider');
+const ydDisplay = document.getElementById('ydstogo_val');
+const probDisplay = document.getElementById('probability_display');
+
+// Base input JSON
+let baseData = {
+    "ydstogo": 10,
+    "down": 1,
+    "inertia": 0.7,
+    "score_differential": 5,
+    "play_category": "pass",
+    "rush_pos": "missing",  
+    "pass_pos": "QB",
+    "rec_pos": "WR",
+    "def_vs_rush": 0.7,
+    "def_vs_pass": 0.7,
+    "def_vs_qb_scramble": 0.7,
+    "shotgun": 0.0,
+    "wp": 0.5,
+    "temp": 70,
+    "wind": 0,
+    "roof": "outdoors",
+    "surface": "grass",
+    "location": 1.0,
+    "half_seconds_remaining": 100,
+    "game_half": "Half1",
+    "yardline_100": 40
+  };
+
+// Function to fetch probability
+async function updateProbability(yardline_100) {
+  ydDisplay.innerText = yardline_100;
+  baseData.yardline_100 = yardline_100;
+
+  try {
+    const response = await fetch('/api/predict', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(baseData)
     });
-</script>
+
+    const result = await response.json();
+
+    if (result.probability) {
+      probDisplay.innerText = (result.probability[0]*100).toFixed(2) + "%";
+    } else if (result.error) {
+      probDisplay.innerText = "Error: " + result.error;
+    }
+
+  } catch (err) {
+    probDisplay.innerText = "Request failed: " + err;
+  }
+}
+
+// Initial fetch
+updateProbability(slider.value);
+
+// Update on slider move
+slider.addEventListener('input', () => {
+  updateProbability(slider.value);
+});
+  </script>
+</body>
+</html>
