@@ -17,22 +17,19 @@ The structure of this library aims at making its scaling straightforward: enabli
 > 1. feature_engineering 
 - Build new features, and get the most out of them by using encoders.
 
-> 2. graph
-- Generate customizable graphs to visualize your analysis.
-
-> 3. hyper_tuning
+> 2. hyper_tuning
 - Perform a randomized search to get the best hyperparameters for your models.
 
-> 4. load_data
+> 3. load_data
 - Load your favorite datasets to perform data analysis and modelling.
 
-> 5. metrics
+> 4. metrics
 - Assess the performance of your models.
 
-> 6. preprocessing
+> 5. preprocessing
 - Clean your data and prepare it for analysis.
 
-> 7. train
+> 6. train
 - Train your models. 
 
 ## Ready-to-implement use case. Predicting First Downs in the NFL
