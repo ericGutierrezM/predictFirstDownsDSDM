@@ -34,3 +34,6 @@ The structure of this library aims at making its scaling straightforward: enabli
 
 > 7. train
 - Train your models. 
+
+## Ready-to-implement use case. Predicting First Downs in the NFL
+In the file _test.ipynb_ inside the _notebooks_ folder an example pipeline to use _firstDown_ is provided.
